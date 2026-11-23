@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicesets mobiel herbestellen</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#22695F}a:hover{color:#1A171B}
+@media (min-width: 500px){body{background:#E2E5E5}#dc-root>div{margin:24px auto;border-radius:24px;overflow:hidden;box-shadow:0 12px 40px rgba(26,23,27,0.18)}}
+</style>
+</helmet>
+<div style="width: 390px; max-width: 100%; height: 844px; box-sizing: border-box; font-family: Lato, 'Helvetica Neue', Arial, sans-serif; color: #1A171B; background: #F6F7F7; font-size: 16px; line-height: 1.45; display: flex; flex-direction: column">
+
+<header style="background: #1A171B; color: #FFFFFF; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 18px"><span style="font-weight: 300">SERVICE</span><span style="font-weight: 900">SETS</span></span>
+<span style="font-size: 14px; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: #3D4143">[Park Noord]</span>
+</header>
+
+<main style="flex: 1; overflow: hidden; padding: 20px; display: flex; flex-direction: column; gap: 16px">
+<h1 style="margin: 0; font-size: 26px; font-weight: 300">Wat is <span style="font-weight: 900">er op?</span></h1>
+
+
+<div style="padding: 16px; border-radius: 12px; background: #FFF4E5; color: #6B3D00; font-size: 15px"><strong>[Koffieset lodge]</strong> is bijna op in je klantvoorraad: nog [AANTAL] sets.</div>
+
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<li style="background: #FFFFFF; border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: flex; flex-direction: column"><strong>[Welkomstset chalet]</strong><span style="font-size: 13px; color: #5B5F61">Klantvoorraad · 2 tot 5 werkdagen</span></span>
+<span style="display: flex; align-items: center; gap: 6px"><button aria-label="Minder" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #B8BEC0; background: #FFFFFF; font: inherit; font-size: 20px">−</button><span style="min-width: 28px; text-align: center; font-weight: 900">2</span><button aria-label="Meer" style="width: 44px; height: 44px; border-radius: 10px; border: 0; background: #66C0B5; font: inherit; font-size: 20px">+</button></span>
+</li>
+<li style="background: #FFFFFF; border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: flex; flex-direction: column"><strong>[Koffieset lodge]</strong><span style="font-size: 13px; color: #5B5F61">Klantvoorraad · 2 tot 5 werkdagen</span></span>
+<span style="display: flex; align-items: center; gap: 6px"><button aria-label="Minder" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #B8BEC0; background: #FFFFFF; font: inherit; font-size: 20px">−</button><span style="min-width: 28px; text-align: center; font-weight: 900">1</span><button aria-label="Meer" style="width: 44px; height: 44px; border-radius: 10px; border: 0; background: #66C0B5; font: inherit; font-size: 20px">+</button></span>
+</li>
+<li style="background: #FFFFFF; border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: flex; flex-direction: column"><strong>[Afwasset]</strong><span style="font-size: 13px; color: #5B5F61">Per doos · morgen verzonden</span></span>
+<span style="display: flex; align-items: center; gap: 6px"><button aria-label="Minder" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #B8BEC0; background: #FFFFFF; font: inherit; font-size: 20px">−</button><span style="min-width: 28px; text-align: center; font-weight: 900">0</span><button aria-label="Meer" style="width: 44px; height: 44px; border-radius: 10px; border: 0; background: #66C0B5; font: inherit; font-size: 20px">+</button></span>
+</li>
+</ul>
+<a href="#" style="font-size: 15px; font-weight: 700">Vorige bestelling herhalen</a>
+</main>
+
+<footer style="background: #FFFFFF; border-top: 1px solid #E2E5E5; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; font-size: 14px; color: #3D4143"><span>3 dozen · op rekening</span><span>[PRIJS] excl. btw</span></div>
+<button style="min-height: 56px; border: 0; border-radius: 12px; background: #1A171B; color: #FFFFFF; font: inherit; font-weight: 900; font-size: 17px; cursor: pointer">Bestelling plaatsen</button>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

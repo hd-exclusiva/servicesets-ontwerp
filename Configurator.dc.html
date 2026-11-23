@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicesets configurator</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#22695F}a:hover{color:#1A171B}
+</style>
+</helmet>
+<div style="font-family: Lato, 'Helvetica Neue', Arial, sans-serif; color: #1A171B; background: #F6F7F7; font-size: 16px; line-height: 1.5">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E2E5E5">
+<div style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="Main.dc.html" aria-label="Terug naar home" style="display: flex; color: #1A171B; text-decoration: none"><img src="img/logo.png" alt="Servicesets" style="height: 20px; width: auto"></a>
+<ol aria-label="Stappen" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; font-weight: 700">
+<li style="padding: 6px 14px; border-radius: 999px; background: #66C0B5; color: #1A171B">1 Aantal</li>
+<li style="padding: 6px 14px; border-radius: 999px; background: #1A171B; color: #FFFFFF">2 Inhoud</li>
+<li style="padding: 6px 14px; border-radius: 999px; background: #1A171B; color: #FFFFFF">3 Verpakking</li>
+<li style="padding: 6px 14px; border-radius: 999px; background: #1A171B; color: #FFFFFF">4 Eigen look</li>
+</ol>
+<div style="flex: 1 1 40px"></div>
+<a href="Portaal.dc.html" style="font-size: 14px; font-weight: 700">Opslaan en later verder</a>
+</div>
+</header>
+
+<main style="max-width: 1240px; margin: 0 auto; padding: 32px 24px 64px; display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+
+<section aria-label="Kies je opties" style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+
+<div style="background: #FFFFFF; border-radius: 16px; border: 2px solid #1A171B; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<div><h2 style="margin: 0; font-size: 24px; font-weight: 900">1. Hoeveel sets heb je nodig?</h2>
+<p style="margin: 4px 0 0; color: #3D4143; font-size: 15px">Een schatting is goed genoeg. Je kunt het aantal bij elke stap aanpassen; hoe meer sets, hoe meer opties er openklappen.</p></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<template data-sc-for list="{{chips}}" as="c"><button onClick="{{c.pick}}" aria-pressed="{{c.on}}" style="{{c.style}}">{{c.label}}</button></template>
+</div>
+<label style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-weight: 700; font-size: 15px">Of vul in
+<input type="number" min="32" step="1" value="{{qty}}" onChange="{{setQty}}" style="width: 160px; min-height: 48px; padding: 0 14px; border: 1px solid #8E9597; border-radius: 8px; font: inherit; font-weight: 400"> sets</label>
+<template data-sc-if="{{nextHint}}"><p style="margin: 0; padding: 12px 16px; border-radius: 10px; background: #E6F4F2; font-size: 14px">{{nextText}} <button onClick="{{goNext}}" style="margin-left: 8px; min-height: 36px; padding: 0 12px; border: 1px solid #1A171B; border-radius: 8px; background: #FFFFFF; font: inherit; font-weight: 700; cursor: pointer">{{nextBtn}}</button></p></template>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 16px; border: 1px solid #E2E5E5; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<div><h2 style="margin: 0; font-size: 22px; font-weight: 900">2. Wat zit erin?</h2>
+<p style="margin: 4px 0 0; color: #5B5F61; font-size: 15px">Kies een basisset en stel de inhoud samen. In deze demo werken we de keukenset uit.</p></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px">
+<template data-sc-for list="{{bases}}" as="bs">
+<button onClick="{{bs.pick}}" aria-pressed="{{bs.on}}" style="{{bs.style}}"><img src="{{bs.img}}" alt="{{bs.name}}" style="width: 100%; aspect-ratio: 1 / 1; object-fit: contain; background: #FFFFFF; border-radius: 8px"><span style="font-weight: 900; font-size: 15px">{{bs.name}}</span></button>
+</template>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px">
+<template data-sc-for list="{{items}}" as="it">
+<button onClick="{{it.toggle}}" aria-pressed="{{it.on}}" style="{{it.style}}">
+<span style="display: flex; align-items: center; gap: 12px; text-align: left">
+<template data-sc-if="{{it.hasImg}}"><img src="{{it.img}}" alt="{{it.label}}" style="width: 56px; height: 56px; flex: none; object-fit: cover; border-radius: 8px; border: 1px solid #E2E5E5; background: #FFFFFF"></template>
+<template data-sc-if="{{it.noImg}}"><span style="width: 56px; height: 56px; flex: none; border-radius: 8px; background: #F2F4F4; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #5B5F61; text-align: center; line-height: 1.2">foto<br>volgt</span></template>
+<span style="display: flex; flex-direction: column"><span style="font-weight: 700">{{it.label}}</span><span style="font-size: 13px; color: #5B5F61">{{it.note}}</span></span></span>
+<span style="font-weight: 900; font-size: 18px">{{it.mark}}</span>
+</button>
+</template>
+</div>
+<template data-sc-if="{{prodOpen}}">
+<button onClick="{{toggleProd}}" aria-pressed="{{prod}}" style="{{prodStyle}}"><span style="display: flex; flex-direction: column; text-align: left"><span style="font-weight: 700">Eigen product toevoegen, zoals een fles wijn</span><span style="font-size: 13px; color: #5B5F61">Op offertebasis: aanlevering en verpakking stemmen we samen af</span></span><span style="font-weight: 900; font-size: 18px">{{prodMark}}</span></button>
+</template>
+<template data-sc-if="{{prodLocked}}">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; min-height: 56px; padding: 10px 16px; border-radius: 10px; background: #F2F4F4; color: #5B5F61">
+<span style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg><span><b>Eigen product toevoegen, zoals een fles wijn</b><br><span style="font-size: 13px">{{prodNote}}</span></span></span>
+<button onClick="{{raiseProd}}" style="min-height: 40px; padding: 0 14px; border: 1px solid #5B5F61; border-radius: 8px; background: #FFFFFF; color: #1A171B; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{prodBtn}}</button>
+</div>
+</template>
+<template data-sc-if="{{special}}">
+<p style="margin: 0; padding: 12px 16px; border-radius: 10px; background: #FFF4E5; color: #6B3D00; font-size: 14px"><strong>Let op:</strong> een onderdeel zit nog niet in onze inkoopplanning. Reken op ongeveer 3 maanden levertijd, of kies een alternatief.</p>
+</template>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 16px; border: 1px solid #E2E5E5; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<div><h2 style="margin: 0; font-size: 22px; font-weight: 900">3. Verpakking</h2>
+<p style="margin: 4px 0 0; color: #5B5F61; font-size: 15px">De configurator rekent uit welke doosjes passen bij je inhoud en stelt de beste fit voor.</p></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px">
+<template data-sc-for list="{{boxes}}" as="b">
+<button onClick="{{b.pick}}" aria-pressed="{{b.on}}" style="{{b.style}}"><span style="height: 64px; width: 100%; display: flex; align-items: flex-end; justify-content: center; margin-bottom: 6px"><span style="{{b.thumb}}"><span style="display: block; height: 7px; background: #66C0B5"></span></span></span><span style="font-size: 12px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: #22695F">{{b.tag}}</span><span style="font-weight: 900; font-size: 17px">{{b.name}}</span><span style="font-size: 13px; color: #5B5F61">{{b.sub}}</span></button>
+</template>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 16px; border: 1px solid #E2E5E5; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<div><h2 style="margin: 0; font-size: 22px; font-weight: 900">4. Eigen look</h2>
+<p style="margin: 4px 0 0; color: #5B5F61; font-size: 15px">Een label met je logo op het doosje, of vanaf 5.000 sets een doos die helemaal in jouw ontwerp is bedrukt.</p></div>
+<template data-sc-for list="{{stickers}}" as="o">
+<template data-sc-if="{{o.unlocked}}"><button onClick="{{o.pick}}" aria-pressed="{{o.on}}" style="{{o.style}}"><span style="display: flex; align-items: center; gap: 14px; text-align: left"><span style="{{o.thumbBox}}"><span style="display: block; height: 6px; background: #66C0B5"></span><span style="{{o.thumbBadge}}"></span></span><span style="display: flex; flex-direction: column"><span style="font-weight: 700">{{o.title}}</span><span style="font-size: 13px; color: #5B5F61">{{o.sub}}</span></span></span><span style="font-weight: 900; font-size: 18px">{{o.mark}}</span></button></template>
+<template data-sc-if="{{o.locked}}"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; min-height: 56px; padding: 10px 16px; border-radius: 10px; background: #F2F4F4; color: #5B5F61"><span style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg><span><b>{{o.title}}</b><br><span style="font-size: 13px">{{o.note}}</span></span></span><button onClick="{{o.raise}}" style="min-height: 40px; padding: 0 14px; border: 1px solid #5B5F61; border-radius: 8px; background: #FFFFFF; color: #1A171B; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{o.raiseLabel}}</button></div></template>
+</template>
+</div>
+<div style="background: #FFFFFF; border-radius: 16px; border: 2px dashed #1A171B; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 300">Maak het verblijf <span style="font-weight: 900">compleet</span></h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px">
+<button style="display: flex; align-items: center; gap: 12px; min-height: 72px; padding: 8px 14px; border-radius: 10px; border: 1px solid #B8BEC0; background: #FFFFFF; font: inherit; color: #1A171B; cursor: pointer; text-align: left"><img src="img/set-bad-douche.png" alt="Bad en douche" style="width: 56px; height: 56px; flex: none; object-fit: contain; border-radius: 8px"><span style="flex: 1"><strong>Bad en douche</strong><br><span style="font-size: 13px; color: #5B5F61">In dezelfde look · + [PRIJS] per set</span></span><span style="font-weight: 900; font-size: 18px">+</span></button>
+<button style="display: flex; align-items: center; gap: 12px; min-height: 72px; padding: 8px 14px; border-radius: 10px; border: 1px solid #B8BEC0; background: #FFFFFF; font: inherit; color: #1A171B; cursor: pointer; text-align: left"><img src="img/set-koffie-thee.png" alt="Koffie en thee" style="width: 56px; height: 56px; flex: none; object-fit: contain; border-radius: 8px"><span style="flex: 1"><strong>Koffie en thee</strong><br><span style="font-size: 13px; color: #5B5F61">In dezelfde look · + [PRIJS] per set</span></span><span style="font-weight: 900; font-size: 18px">+</span></button>
+</div>
+</div>
+</section>
+
+<aside aria-label="Samenvatting" style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="background: #FFFFFF; border-radius: 16px; border: 1px solid #E2E5E5; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px">
+<img src="{{baseImg}}" alt="{{baseName}}" style="width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: #FFFFFF; border-radius: 12px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #22695F">Zo wordt je doosje</p>
+<div style="height: 200px; width: 100%; border-radius: 12px; background: #E6F4F2; display: flex; align-items: center; justify-content: center">
+<div style="{{boxStyle}}">
+<div style="height: 18px; background: #66C0B5; border-radius: 6px 6px 0 0"></div>
+<div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 6px">
+<template data-sc-if="{{hasSticker}}"><span style="padding: 4px 10px; border: 2px dashed #1A171B; border-radius: 999px; font-weight: 900; font-size: 13px">[Jouw label]</span></template>
+<template data-sc-if="{{printed}}"><span style="font-weight: 900; font-size: 14px; text-align: center">[Jouw ontwerp]</span></template>
+<template data-sc-if="{{noSticker}}"><span style="font-size: 13px; color: #5B5F61"><span style="font-weight: 300">SERVICE</span><span style="font-weight: 900">SETS</span></span></template>
+</div>
+</div>
+</div>
+<p style="margin: 0; font-size: 14px; color: #3D4143">{{boxName}}</p>
+</div>
+<div style="background: #1A171B; color: #FFFFFF; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 900">Jouw set</h2>
+<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; font-size: 15px">
+<dt style="color: #C9CDCE">Aantal</dt><dd style="margin: 0; text-align: right; font-weight: 900">{{qtyText}} sets</dd>
+<dt style="color: #C9CDCE">Inhoud</dt><dd style="margin: 0; text-align: right">{{count}} onderdelen</dd>
+<dt style="color: #C9CDCE">Verpakking</dt><dd style="margin: 0; text-align: right">{{boxName}}</dd>
+<dt style="color: #C9CDCE">Eigen look</dt><dd style="margin: 0; text-align: right">{{stickerText}}</dd>
+<dt style="color: #C9CDCE">Levertijd</dt><dd style="margin: 0; text-align: right; color: #66C0B5; font-weight: 700">{{leadText}}</dd>
+</dl>
+<div style="border-top: 1px solid #3D4143; padding-top: 14px; display: flex; justify-content: space-between; align-items: baseline"><span>Totaal excl. btw</span><span style="font-size: 26px; font-weight: 900">{{priceText}}</span></div>
+<a href="Checkout.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 10px; background: #66C0B5; color: #1A171B; text-decoration: none; font-weight: 900">{{ctaMain}}</a>
+<template data-sc-if="{{canOrder}}"><a href="#" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 10px; border: 1px solid #FFFFFF; color: #FFFFFF; text-decoration: none; font-weight: 700">Offerte als pdf</a></template>
+<p style="margin: 0; font-size: 13px; color: #C9CDCE">{{ctaNote}}</p>
+</div>
+</aside>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"drempelLabel":{"editor":"int","default":180,"min":1,"section":"Drempels"},"drempelProduct":{"editor":"int","default":1000,"min":1,"section":"Drempels"},"drempelDoos":{"editor":"int","default":5000,"min":1,"section":"Drempels"},"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.state = { base: 'keuken', qty: 150, on: { afwasmiddel: true, borstel: true, spons: true, tabletten: true, toiletpapier: false, lucifers: false, eco: false }, box: null, prod: false, doos: false, sticker: 'geen' };
+  }
+  renderVals() {
+    const s = this.state;
+    const S = this.props.drempelLabel ?? 180, P = this.props.drempelProduct ?? 1000, D = this.props.drempelDoos ?? 5000;
+    const fmt = (n) => Number(n).toLocaleString('nl-NL');
+    const qty = s.qty;
+    const setQ = (n) => this.setState({ qty: n });
+    const btn = (on) => 'min-height:48px;padding:0 18px;border-radius:10px;cursor:pointer;font:inherit;font-weight:700;' + (on ? 'background:#1A171B;color:#FFFFFF;border:0' : 'background:#FFFFFF;color:#1A171B;border:1px solid #1A171B');
+    const choice = (on) => 'display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;padding:10px 16px;border-radius:10px;cursor:pointer;font:inherit;color:#1A171B;text-align:left;width:100%;' + (on ? 'background:#E6F4F2;border:2px solid #1A171B' : 'background:#FFFFFF;border:1px solid #B8BEC0');
+    const chips = [32, S, 1000, D, 10000].filter((v, i, a) => a.indexOf(v) === i).sort((a, b) => a - b).map(n => ({ label: n === 32 ? '1 doos (32)' : fmt(n), on: qty === n, style: btn(qty === n), pick: () => setQ(n) }));
+    const defs = [
+      { id: 'afwasmiddel', label: 'Afwasmiddel', note: 'Flacon, ecolabel', img: 'img/item-afwasmiddel.png' },
+      { id: 'borstel', label: 'Afwasborstel', note: 'Vraagt een langere doos', img: 'img/item-afwasborstel.png' },
+      { id: 'spons', label: 'Schuursponsje', note: 'Per stuk verpakt', img: 'img/item-schuursponsje.png' },
+      { id: 'tabletten', label: 'Vaatwastabletten', note: 'Twee stuks, per stuk verpakt', img: 'img/item-vaatwastabletten.png' },
+      { id: 'toiletpapier', label: 'Toiletpapier', note: 'Vraagt de doos met rol', img: 'img/item-toiletpapier.png' },
+      { id: 'lucifers', label: 'Lucifers', note: 'Voor de open haard of bbq', img: 'img/item-lucifers.png' },
+      { id: 'eco', label: 'Bamboe borstel', note: 'Nog niet in voorraadplanning', img: '' }
+    ];
+    const items = defs.map(d => { const on = !!s.on[d.id]; return Object.assign({}, d, { hasImg: !!d.img, noImg: !d.img, on: on, mark: on ? '✓' : '+', style: choice(on), toggle: () => this.setState({ on: Object.assign({}, s.on, { [d.id]: !on }), box: null }) }); });
+    const chosen = items.filter(i => i.on);
+    const prodOk = qty >= P; const prod = s.prod && prodOk;
+    const borstel = s.on.borstel || s.on.eco, rol = s.on.toiletpapier;
+    const all = [
+      { id: 'klein', name: 'Klein doosje', sub: 'Compact, voor 3 tot 4 onderdelen', fits: !borstel && !rol && !prod, dims: 'width:150px;height:110px' },
+      { id: 'lang', name: 'Lange doos', sub: 'Voor een borstel of fles', fits: !rol && !prod, dims: 'width:230px;height:100px' },
+      { id: 'rol', name: 'Doos met rol', sub: 'Met ruimte voor toiletpapier', fits: !prod, dims: 'width:170px;height:140px' },
+      { id: 'groot', name: 'Grote doos', sub: 'Ook voor een eigen product', fits: true, dims: 'width:220px;height:150px' }
+    ];
+    const fit = all.filter(b => b.fits);
+    const advice = fit[0];
+    const sel = fit.find(b => b.id === s.box) || advice;
+    const doos = s.sticker === 'bedrukt' && qty >= D;
+    const baseDefs = [
+      { id: 'keuken', name: 'Keukenset', img: 'img/set-keuken.png' },
+      { id: 'bad', name: 'Bad en douche', img: 'img/set-bad-douche.png' },
+      { id: 'koffie', name: 'Koffie en thee', img: 'img/set-koffie-thee.png' },
+      { id: 'spel', name: 'Spel en vermaak', img: 'img/set-spel.png' }
+    ];
+    const bases = baseDefs.map(b => ({ name: b.name, img: b.img, on: s.base === b.id, style: 'display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px;border-radius:12px;cursor:pointer;font:inherit;color:#1A171B;' + (s.base === b.id ? 'background:#E6F4F2;border:2px solid #1A171B' : 'background:#FFFFFF;border:1px solid #B8BEC0'), pick: () => this.setState({ base: b.id }) }));
+    const baseSel = baseDefs.find(b => b.id === s.base) || baseDefs[0];
+    const tw = { klein: [44, 32], lang: [72, 28], rol: [52, 44], groot: [70, 48] };
+    const boxes = fit.map(b => ({ thumb: 'display:block;width:' + tw[b.id][0] + 'px;height:' + tw[b.id][1] + 'px;background:#FFFFFF;border:1px solid #8E9597;border-radius:4px;overflow:hidden', name: b.name, sub: b.sub, tag: b.id === advice.id ? 'Advies: beste fit' : 'Past ook', on: b.id === sel.id, style: 'display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:96px;padding:14px 16px;border-radius:10px;cursor:pointer;font:inherit;color:#1A171B;text-align:left;' + (b.id === sel.id ? 'background:#E6F4F2;border:2px solid #1A171B' : 'background:#FFFFFF;border:1px solid #B8BEC0'), pick: () => this.setState({ box: b.id }) }));
+    const lockNote = (n) => 'Vanaf ' + fmt(n) + ' sets · nog ' + fmt(n - qty) + ' te gaan';
+    const thumbFor = (k) => ({ thumbBox: 'position:relative;display:block;width:56px;height:44px;flex:none;border-radius:6px;overflow:hidden;border:1px solid #8E9597;background:' + (k === 'bedrukt' ? '#66C0B5' : '#FFFFFF'), thumbBadge: k === 'label' ? 'position:absolute;left:18px;top:16px;width:20px;height:20px;border-radius:999px;background:#1A171B' : (k === 'bedrukt' ? 'position:absolute;left:8px;top:14px;width:40px;height:22px;border-radius:4px;background:#1A171B' : 'display:none') });
+    const opt = (o) => Object.assign({ unlocked: qty >= o.min, locked: qty < o.min, note: lockNote(o.min), raiseLabel: 'Naar ' + fmt(o.min) + ' sets', raise: () => setQ(o.min), mark: o.on ? '✓' : '+', style: choice(o.on) }, o);
+    const stickers = [
+      Object.assign(thumbFor('geen'), opt({ min: 0, title: 'Geen eigen look', sub: 'Servicesets-doosje', on: s.sticker === 'geen' || (s.sticker !== 'bedrukt' && qty < S) || (s.sticker === 'bedrukt' && qty < D), pick: () => this.setState({ sticker: 'geen' }) })),
+      Object.assign(thumbFor('label'), opt({ min: S, title: 'Eigen label, zelf maken', sub: 'Upload je logo; je krijgt een proef ter goedkeuring', on: s.sticker === 'zelf' && qty >= S, pick: () => this.setState({ sticker: 'zelf' }) })),
+      Object.assign(thumbFor('label'), opt({ min: S, title: 'Eigen label door onze designer', sub: 'Tegen een kleine meerprijs: + [PRIJS]', on: s.sticker === 'designer' && qty >= S, pick: () => this.setState({ sticker: 'designer' }) })),
+      Object.assign(thumbFor('bedrukt'), opt({ min: D, title: 'Bedrukte doos in je eigen ontwerp', sub: 'In plaats van een label: de hele doos in jouw huisstijl. Designtraject met offerte', on: doos, pick: () => this.setState({ sticker: 'bedrukt' }) }))
+    ];
+    const st = doos ? 'bedrukt' : ((s.sticker === 'zelf' || s.sticker === 'designer') && qty >= S ? s.sticker : 'geen');
+    const stickerText = st === 'zelf' ? 'Label, zelf gemaakt' : (st === 'designer' ? 'Label door designer' : (st === 'bedrukt' ? 'Bedrukte doos' : 'Geen'));
+    const next = [S, P, D].filter(n => n > qty).sort((a, b) => a - b)[0];
+    const nextWhat = next === S ? 'een eigen label' : (next === P ? 'een eigen product in de set' : 'een bedrukte doos in je eigen ontwerp');
+    const offerte = prod || doos;
+    const special = !!s.on.eco;
+    const lead = special ? 'ca. 3 maanden' : (offerte ? 'na offerte' : (qty < 1000 ? '[X–Y] weken' : (qty < 10000 ? '[X–Y] weken' : 'in overleg')));
+    const boxName = sel.name + (doos ? ', bedrukt' : (sel.id === advice.id ? ' (advies)' : ''));
+    return {
+      chips: chips, qty: qty, qtyText: fmt(qty),
+      setQty: (e) => { const v = parseInt(e && e.target ? e.target.value : e, 10); if (!isNaN(v) && v > 0) setQ(v); },
+      nextHint: !!next, nextText: next ? 'Met ' + fmt(next - qty) + ' sets meer kun je ' + nextWhat + ' kiezen.' : '', nextBtn: next ? 'Naar ' + fmt(next) + ' sets' : '', goNext: () => next && setQ(next),
+      items: items, count: chosen.length + (prod ? 1 : 0), special: special,
+      prodOpen: prodOk, prodLocked: !prodOk, prod: prod, prodMark: prod ? '✓' : '+', prodStyle: choice(prod), toggleProd: () => this.setState({ prod: !s.prod, box: null }), prodNote: lockNote(P), prodBtn: 'Naar ' + fmt(P) + ' sets', raiseProd: () => setQ(P),
+      boxes: boxes, noOpts: [], stickers: stickers, bases: bases, baseImg: baseSel.img, baseName: baseSel.name,
+      boxName: boxName, stickerText: stickerText,
+      hasSticker: st === 'zelf' || st === 'designer', noSticker: st === 'geen', printed: st === 'bedrukt',
+      boxStyle: sel.dims + (doos ? ';border:2px solid #1A171B;background:#66C0B5' : ';border:1px solid #B8BEC0;background:#FFFFFF') + ';border-radius:8px;box-shadow:0 8px 24px rgba(26,23,27,0.12);display:flex;flex-direction:column',
+      leadText: lead, priceText: offerte ? 'op offerte' : '[PRIJS]',
+      canOrder: !offerte, ctaMain: offerte ? 'Offerte aanvragen' : 'Direct bestellen',
+      ctaNote: offerte ? 'Een eigen product of bedrukte doos stemmen we persoonlijk met je af. Je hoort binnen [X] werkdagen van ons.' : 'De definitieve leverdatum volgt bij je orderbevestiging.'
+    };
+  }
+}
+</script>
+</body>
+</html>

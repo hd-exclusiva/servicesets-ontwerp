@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicesets checkout</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#22695F}a:hover{color:#1A171B}
+</style>
+</helmet>
+<div style="font-family: Lato, 'Helvetica Neue', Arial, sans-serif; color: #1A171B; background: #F6F7F7; font-size: 16px; line-height: 1.5">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E2E5E5">
+<div style="max-width: 1240px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<a href="Main.dc.html" aria-label="Servicesets home" style="display: flex; color: #1A171B; text-decoration: none"><img src="img/logo.png" alt="Servicesets" style="height: 20px; width: auto"></a>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #3D4143"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>Veilig afrekenen</span>
+</div>
+</header>
+
+<main style="max-width: 1240px; margin: 0 auto; padding: 32px 24px 64px; display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<h1 style="margin: 0; font-size: 34px; font-weight: 300">Bestelling <span style="font-weight: 900">afronden</span></h1>
+
+<section aria-labelledby="c-account" style="background: #FFFFFF; border: 1px solid #E2E5E5; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="c-account" style="margin: 0; font-size: 20px; font-weight: 900">1. Je bedrijf</h2><a href="Portaal.dc.html" style="font-size: 14px; font-weight: 700">Al klant? Inloggen</a></div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 14px">KvK-nummer of bedrijfsnaam<input type="text" value="[Park Noord B.V.]" style="min-height: 48px; padding: 0 14px; border: 1px solid #B8BEC0; border-radius: 8px; font: inherit; font-weight: 400"></label>
+<p style="margin: 0; padding: 12px 16px; border-radius: 10px; background: #E6F4F2; font-size: 14px; display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A171B" stroke-width="2"><path d="M5 12l5 5 9-10"></path></svg><span>Gevonden in het KvK-register. Adres en btw-nummer zijn ingevuld.</span></p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 14px">Naam<input type="text" placeholder="Voor- en achternaam" style="min-height: 48px; padding: 0 14px; border: 1px solid #B8BEC0; border-radius: 8px; font: inherit; font-weight: 400"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 14px">E-mail<input type="email" placeholder="naam@bedrijf.nl" style="min-height: 48px; padding: 0 14px; border: 1px solid #B8BEC0; border-radius: 8px; font: inherit; font-weight: 400"></label>
+</div>
+</section>
+
+<section aria-labelledby="c-levering" style="background: #FFFFFF; border: 1px solid #E2E5E5; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="c-levering" style="margin: 0; font-size: 20px; font-weight: 900">2. Levering</h2>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 14px">Afleverlocatie<select style="min-height: 48px; padding: 0 14px; border: 1px solid #B8BEC0; border-radius: 8px; font: inherit; font-weight: 400; background: #FFFFFF"><option>[Park Noord, receptie]</option><option>[Park Zuid, magazijn]</option><option>Nieuw adres toevoegen</option></select></label>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 14px">Jouw inkoopnummer (PO)<input type="text" placeholder="Optioneel, komt op de factuur" style="min-height: 48px; padding: 0 14px; border: 1px solid #B8BEC0; border-radius: 8px; font: inherit; font-weight: 400"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 14px">Gewenste leverdatum<input type="text" value="Zo snel mogelijk" style="min-height: 48px; padding: 0 14px; border: 1px solid #B8BEC0; border-radius: 8px; font: inherit; font-weight: 400"></label>
+</div>
+<p style="margin: 0; font-size: 14px; color: #3D4143">Standaardsets: voor [CUT-OFF] besteld, morgen verzonden. Je maatwerkset volgt apart, verwacht [X–Y] weken.</p>
+</section>
+
+<section aria-labelledby="c-betalen" style="background: #FFFFFF; border: 1px solid #E2E5E5; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="c-betalen" style="margin: 0; font-size: 20px; font-weight: 900">3. Betalen</h2>
+<label style="display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 12px 16px; border: 2px solid #1A171B; border-radius: 10px; background: #E6F4F2; cursor: pointer"><input type="radio" name="betaal" checked="" style="width: 20px; height: 20px; accent-color: #1A171B"><span style="display: flex; flex-direction: column"><strong>Op rekening, binnen 30 dagen</strong><span style="font-size: 13px; color: #3D4143">Direct goedgekeurd, je betaalt na ontvangst van de factuur</span></span></label>
+<label style="display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 12px 16px; border: 1px solid #B8BEC0; border-radius: 10px; cursor: pointer"><input type="radio" name="betaal" style="width: 20px; height: 20px; accent-color: #1A171B"><strong>iDEAL</strong></label>
+<label style="display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 12px 16px; border: 1px solid #B8BEC0; border-radius: 10px; cursor: pointer"><input type="radio" name="betaal" style="width: 20px; height: 20px; accent-color: #1A171B"><strong>Zakelijke creditcard</strong></label>
+<label style="display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 12px 16px; border: 1px solid #B8BEC0; border-radius: 10px; cursor: pointer"><input type="radio" name="betaal" style="width: 20px; height: 20px; accent-color: #1A171B"><strong>Bancontact</strong></label>
+</section>
+</div>
+
+<aside aria-label="Overzicht van je bestelling" style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="background: #FFFFFF; border: 1px solid #E2E5E5; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 900">Je bestelling</h2>
+<div style="display: flex; gap: 12px; align-items: center"><img src="img/set-bad-douche.png" alt="Welkomstset" style="width: 56px; height: 56px; flex: none; object-fit: contain; background: #FFFFFF; border: 1px solid #E2E5E5; border-radius: 8px"><span style="flex: 1"><strong>[Welkomstset chalet]</strong><br><span style="font-size: 13px; color: #5B5F61">Maatwerk · eigen logo · 10.000 sets</span></span><span>[PRIJS]</span></div>
+<div style="display: flex; gap: 12px; align-items: center"><img src="img/set-keuken.png" alt="Afwasset" style="width: 56px; height: 56px; flex: none; object-fit: contain; background: #FFFFFF; border: 1px solid #E2E5E5; border-radius: 8px"><span style="flex: 1"><strong>[Afwasset vakantiewoning]</strong><br><span style="font-size: 13px; color: #5B5F61">Standaardset · 4 dozen</span></span><span>[PRIJS]</span></div>
+<div style="border-top: 1px solid #E2E5E5; padding-top: 12px; display: grid; grid-template-columns: 1fr auto; gap: 6px; font-size: 15px">
+<span style="color: #5B5F61">Subtotaal</span><span>[PRIJS]</span>
+<span style="color: #5B5F61">Verzending</span><span>[PRIJS]</span>
+<span style="color: #5B5F61">Btw</span><span>[PRIJS]</span>
+<span style="font-weight: 900; font-size: 18px">Totaal</span><span style="font-weight: 900; font-size: 18px">[PRIJS]</span>
+</div>
+<button style="min-height: 56px; border: 0; border-radius: 10px; background: #66C0B5; color: #1A171B; font: inherit; font-weight: 900; font-size: 17px; cursor: pointer">Bestelling plaatsen</button>
+<button style="min-height: 48px; border: 1px solid #1A171B; border-radius: 10px; background: #FFFFFF; color: #1A171B; font: inherit; font-weight: 700; cursor: pointer">Eerst als offerte (pdf) voor akkoord</button>
+<p style="margin: 0; font-size: 13px; color: #5B5F61">Buitenlands btw-nummer? Dan wordt de btw automatisch verlegd.</p>
+</div>
+<div style="background: #FFFFFF; border: 2px dashed #1A171B; border-radius: 16px; padding: 18px; display: flex; gap: 12px; align-items: center">
+<img src="img/set-koffie-thee.png" alt="Koffieset" style="width: 48px; height: 48px; flex: none; object-fit: contain; background: #FFFFFF; border: 1px solid #E2E5E5; border-radius: 8px">
+<span style="flex: 1; font-size: 14px"><strong>[Koffieset lodge]</strong><br>Past bij je welkomstset · [PRIJS]</span>
+<button aria-label="Koffieset toevoegen" style="min-width: 44px; min-height: 44px; border-radius: 8px; border: 1px solid #1A171B; background: #FFFFFF; font: inherit; font-size: 20px; cursor: pointer">+</button>
+</div>
+</aside>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1300}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
